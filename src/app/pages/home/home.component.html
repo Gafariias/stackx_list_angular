@@ -2,25 +2,35 @@
     <navBar></navBar>
     <div class="content-home">
         <h1>Lista de alunos do curso</h1>
-        <div class="filter-form">
-            <div>
-                <label htmlFor="nome">Pesquisar</label>
-                <input 
-                    type="text" 
-                    id="nome"
-                    placeholder='Nome do aluno'
-                />
+        <form [formGroup]="searchForm">
+            <div class="filter-form">
+                <div>
+                    <label htmlFor="nome">Pesquisar</label>
+                    <input 
+                        type="text" 
+                        id="nome"
+                        placeholder='Nome do aluno'
+                        formControlName="nameStudent"
+                        (keyup)="searchValue('name')"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="nacionalidade">Estado</label>
+                    <select 
+                        name="nacionalidade" 
+                        id="nacionalidade"
+                        formControlName="state"
+                        (change)="searchValue('state')"
+                    >
+                        <option value="">Todos</option>
+                        <ng-container *ngFor="let nation of dataUser">
+                            <option [value]="nation.location.state">{{nation.location.state}}</option>
+                        </ng-container>
+                    </select>
+                </div>
             </div>
-            <div>
-                <label htmlFor="nacionalidade">Estado</label>
-                <select 
-                    name="nacionalidade" 
-                    id="nacionalidade"
-                >
-                    <option value="">Todos</option>
-                </select>
-            </div>
-        </div>
+        </form>
+        
     
         <table class="table-content">
             <ng-container *ngIf="!loading && !error">
@@ -28,12 +38,12 @@
                     <tr>
                         <th>Nome</th>
                         <th>Sexo</th>
-                        <th>Nacionalidade</th>
+                        <th>Estado</th>
                         <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of dataUser">
+                    <tr *ngFor="let user of (dataUser | arrayFiltro : filter : typeFilter)">
                         <td>{{user.name.first}} {{user.name.last}}</td>
                         <td>{{user.gender}}</td>
                         <td>{{user.location.state}}</td>
