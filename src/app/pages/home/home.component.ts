@@ -41,14 +41,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  openModal() {
+  openModal(userSelected: UserData) {
     const dialogRef = this.matDialog.open(ModalComponent,{
       minWidth: 500,
       data: {
-        message: 'Hello, World',
-        buttonText: {
-          cancel: 'Done'
-        }
+        userData: userSelected
       }
     })
   }
