@@ -6,6 +6,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { ReactiveFormsModule} from '@angular/forms';
 import { ArrayFiltroPipe } from '../../pipes/array-filtro.pipe';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
 
 
@@ -19,7 +20,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     HomeRoutingModule,
     ComponentsModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatAutocompleteModule
   ]
 })
 export class HomeModule { }

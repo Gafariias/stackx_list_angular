@@ -97,3 +97,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.autocomplete {
+    background: var(--dark-400);
+    color: white;
+    border-bottom: 2px solid var(--dark-500);
+    transition: .1s;
+
+        &:hover {
+            background: var(--dark-600);
+            color: white;
+        }
+    }
