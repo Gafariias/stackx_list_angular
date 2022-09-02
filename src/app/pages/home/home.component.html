@@ -54,7 +54,9 @@
                 </tbody>
             </ng-container>
             <ng-container *ngIf="loading">
-                <p>Carregando...</p>
+                <div class="loader">
+                    <mat-spinner color="warn"></mat-spinner>
+                </div>
             </ng-container>
             <ng-container *ngIf="!loading && error">
                 <h1>Ops! Algo deu errado.</h1>

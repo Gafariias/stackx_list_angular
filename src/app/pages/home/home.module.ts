@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ReactiveFormsModule} from '@angular/forms';
 import { ArrayFiltroPipe } from '../../pipes/array-filtro.pipe';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 
 
@@ -17,7 +18,8 @@ import { ArrayFiltroPipe } from '../../pipes/array-filtro.pipe';
     CommonModule,
     HomeRoutingModule,
     ComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class HomeModule { }
