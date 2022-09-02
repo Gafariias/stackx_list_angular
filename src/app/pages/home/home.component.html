@@ -11,35 +11,44 @@
                 />
             </div>
             <div>
-                <label htmlFor="nacionalidade">Nacionalidade</label>
+                <label htmlFor="nacionalidade">Estado</label>
                 <select 
                     name="nacionalidade" 
                     id="nacionalidade"
                 >
-                    <option value="">Todas</option>
+                    <option value="">Todos</option>
                 </select>
             </div>
         </div>
     
         <table class="table-content">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Sexo</th>
-                    <th>Nacionalidade</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Gabriel Farias</td>
-                    <td>Masculino</td>
-                    <td>Brasileiro</td>
-                    <td>
-                        <button>Visualizar</button>
-                    </td>
-                </tr>
-            </tbody>
+            <ng-container *ngIf="!loading && !error">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sexo</th>
+                        <th>Nacionalidade</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of dataUser">
+                        <td>{{user.name.first}} {{user.name.last}}</td>
+                        <td>{{user.gender}}</td>
+                        <td>{{user.location.state}}</td>
+                        <td>
+                            <button (click)="openModal()">Visualizar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </ng-container>
+            <ng-container *ngIf="loading">
+                <p>Carregando...</p>
+            </ng-container>
+            <ng-container *ngIf="!loading && error">
+                <h1>Ops! Algo deu errado.</h1>
+                <button>Recarregar</button>
+            </ng-container>
         </table>
     </div>
 </div>

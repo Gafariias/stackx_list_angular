@@ -12,7 +12,7 @@ export class UsersService {
     private http: HttpClient,
   ) { }
 
-  getUsers(quantityUsers: string): Observable<any> {
-    return this.http.get(`${environment.userApiUrl}?results=${quantityUsers}`)
+  getUsers(quantityUsers: string, countryUser: string): Observable<any> {
+    return this.http.get(`${environment.userApiUrl}?results=${quantityUsers}&nat=${countryUser}`)
   }
 }
